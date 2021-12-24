@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color:black;
+                color:red;
+            }
+            #container {
+                width:100%;
+                
+                background-color:black;
+                /* align-items: center; */
+                height:600px;
+            }
+            #content {
+                width:45%;
+                
+                margin:auto;
+                background-color:black;
+                border:2px solid red;
+                height:400px;
+                margin-top:100px;
+                display:flex;
+                flex-direction:column;
+
+            }
+            #name, #backBtn {
+                width:100%;
+                height:15%;
+                background-color:black;
+                text-align:center;
+                /* border:2px solid red; */
+            }
+            #details {
+                width:100%;
+                height:68%;
+                display:grid;
+                grid-template-columns: 40% 40%;
+                grid-template-rows: 80%;
+                grid-gap:20px;
+                /* border:2px solid blue; */
+            }
+            #profile {
+                border:1px solid red;
+                margin-left:40px;
+                margin-top:30px;
+                margin-bottom:-10px;
+                padding:20px;
+                border-radius:5px;
+            }
+            #another {
+                border:1px solid red;
+                margin-left:40px;
+                margin-top:30px;
+                margin-bottom:-10px;
+                padding:20px;
+                /* margin-right:-20px; */
+                border-radius:5px;
+
+
+            }
+            #btn {
+                width:140px;
+                height:40px;
+                color:red;
+                border-radius:20px;
+                background-color:black;
+                border:2px solid red;
+                border-radius:5px;
+
+            }
+            #profile:hover, #another:hover, #btn:hover {
+                color:white;
+                border:1px solid white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <div id = "content">
+                <div id = "name"></div>
+                <div id = "details">
+                    <div id = "profile"></div>
+                    <div id = "another"></div>
+                </div>
+                <div id = "backBtn">
+                    <button id = "btn" onclick = "goBack()">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    function goBack() {
+        window.location = "starsWar.html";
+    }
+    function show() {
+        var details = JSON.parse(localStorage.getItem("details"));
+        
+
+        //for name and
+        var div_name = document.getElementById("name");
+        var p_name = document.createElement("h1");
+        p_name.innerText = details.name;
+        div_name.append(p_name); //
+
+
+        //for personal info
+        var div_profile = document.getElementById("profile");
+        var h_info = document.createElement("h2");
+        h_info.innerText = "Personal Info";
+
+        var p_birth = document.createElement("p");
+        p_birth.innerText = "Birth Year: " + details.birth_year;
+
+
+        var p_gender = document.createElement("p");
+        p_gender.innerText = "Gender :" + details.gender;
+
+
+        var p_height = document.createElement("p");
+        p_height.innerText = "Height : " + details.height;
+
+        var br = document.createElement("br");
+        div_profile.append(h_info, p_birth, p_gender, p_height);
+
+
+
+        //For Anatomy
+
+        var div_anatomy = document.getElementById("another");
+        var h_anatomy = document.createElement("h2");
+        h_anatomy.innerText = "Anatomy";
+
+        var p_eyecolor = document.createElement("p");
+        p_eyecolor.innerText = "Eye Color: " + details.eye_color;
+
+
+        var p_mass = document.createElement("p");
+        p_mass.innerText = "Gender :" + details.mass;
+
+
+        var p_hair = document.createElement("p");
+        p_hair.innerText = "Height : " + details.hair_color;
+
+        var br = document.createElement("br");
+        div_anatomy.append(h_anatomy, p_eyecolor, p_mass, p_hair);
+
+    }
+    show();
+</script>
